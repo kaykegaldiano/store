@@ -1,4 +1,12 @@
-<?php require 'Publicacoes.php' ?>
+<?php
+
+include 'Publicacoes.php';
+$publicacoes = new Publicacoes();
+$appsPopulares = $publicacoes->exibirAppsPopulares();
+$jogosPopulares = $publicacoes->exibirJogosPopulares();
+$destaques = $publicacoes->exibirDestaques();
+$lancamentos = $publicacoes->exibirLancamentos();
+?>
 
 <section class="populares" id="populares">
     <div class="populares__itens">

@@ -1,3 +1,6 @@
+<?php
+require 'config.php';
+?>
 <?php include 'topo.php' ?>
 <main class="conteudo">
   <?php include 'destaques.php' ?>
