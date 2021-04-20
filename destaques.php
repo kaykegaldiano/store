@@ -1,37 +1,29 @@
+<?php
+require_once 'src/Publicacoes.php';
+$publicacoesDestaques = new Publicacoes($mysql);
+$destaquePrincipal = $publicacoesDestaques->exibirDestaquePrincipal();
+$destaquesSecundarios = $publicacoesDestaques->exibirDestaquesSecundarios();
+$categorias = $publicacoesDestaques->exibirCategorias();
+?>
+
 <section class="destaques">
-    <div class="destaques__principal caixa">
-        <h3 class="destaques__titulo">Fortnite</h3>
-    </div>
-    <div class="destaques__secundario caixa">
-        <h3 class="destaques__titulo">PUBG</h3>
-    </div>
-    <div class="destaques__secundario caixa">
-        <h3 class="destaques__titulo">Slack</h3>
-    </div>
-    <div class="destaques__secundario caixa">
-        <h3 class="destaques__titulo">Whatsapp</h3>
-    </div>
-    <div class="destaques__secundario caixa">
-        <h3 class="destaques__titulo">CS: GO</h3>
-    </div>
+    <a href="publicacoes.php" class="destaques__principal caixa">
+        <h3 class="destaques__titulo"><?= $destaquePrincipal['titulo'] ?></h3>
+    </a>
+    <?php foreach ($destaquesSecundarios as $secundarios) : ?>
+        <a href="publicacoes.php" class="destaques__secundario caixa">
+            <h3 class="destaques__titulo"><?= $secundarios['titulo'] ?></h3>
+        </a>
+    <?php endforeach ?>
     <div class="destaques__categorias">
         <ul class="destaques__categorias___lista">
-            <li class="destaques__categorias___item">
-                <a href="#populares" class="destaques__categorias___link"><i class="destaques__categorias___icone fab fa-buromobelexperte"></i>
-                    Aplicativos Populares</a>
-            </li>
-            <li class="destaques__categorias___item">
-                <a href="#jogos-populares" class="destaques__categorias___link"><i class="destaques__categorias___icone fas fa-list-ol"></i>
-                    Jogos Populares</a>
-            </li>
-            <li class="destaques__categorias___item">
-                <a href="#destaques" class="destaques__categorias___link"><i class="destaques__categorias___icone far fa-star"></i> Em
-                    Destaque</a>
-            </li>
-            <li class="destaques__categorias___item">
-                <a href="#lancamentos" class="destaques__categorias___link"><i class="destaques__categorias___icone far fa-bell"></i>
-                    Lançamentos</a>
-            </li>
+            <?php foreach ($categorias as $categoria) : ?>
+                <li class="destaques__categorias___item">
+                    <a href="<?= $categoria['redirect'] ?>" class="destaques__categorias___link"><i class="destaques__categorias___icone <?= $categoria['icon'] ?>"></i>
+                        <?= $categoria['titulo'] ?>
+                    </a>
+                </li>
+            <?php endforeach ?>
         </ul>
     </div>
 </section>

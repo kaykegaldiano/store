@@ -1,7 +1,7 @@
 <?php
 
-include 'Publicacoes.php';
-$publicacoes = new Publicacoes();
+include_once 'src/Publicacoes.php';
+$publicacoes = new Publicacoes($mysql);
 $appsPopulares = $publicacoes->exibirAppsPopulares();
 $jogosPopulares = $publicacoes->exibirJogosPopulares();
 $destaques = $publicacoes->exibirDestaques();
@@ -28,8 +28,11 @@ $lancamentos = $publicacoes->exibirLancamentos();
                     <img class="populares__card___imagem" src="<?= $popular['imagem'] ?>" />
                     <div class="populares__card___corpo">
                         <div class="populares__card___cabecalho">
-                            <h5 class="populares__card___titulo"><?= $popular['titulo'] ?></h5>
-                            <time class="populares__card___data" datetime=<?= $popular['data'] ?>><?= $popular['data'] ?></time>
+                            <a href="publicacoes.php?id=<?= $popular['id'] ?>">
+                                <h5 class="populares__card___titulo"><?= $popular['titulo'] ?></h5>
+                            </a>
+                            <time class="populares__card___data" datetime=<?= $popular['data_pub'] ?>><?php $date = date_create($popular['data_pub']);
+                                                                                                        echo date_format($date, 'd/m/Y'); ?></time>
                         </div>
                         <div class="populares__card___descricao">
                             <?= $popular['descricao'] ?>
@@ -59,7 +62,8 @@ $lancamentos = $publicacoes->exibirLancamentos();
                     <div class="populares__card___corpo">
                         <div class="populares__card___cabecalho">
                             <h5 class="populares__card___titulo"><?= $populares['titulo'] ?></h5>
-                            <time class="populares__card___data" datetime=<?= $populares['data'] ?>><?= $populares['data'] ?></time>
+                            <time class="populares__card___data" datetime=<?= $populares['data_pub'] ?>><?php $date = date_create($populares['data_pub']);
+                                                                                                        echo date_format($date, 'd/m/Y'); ?></time>
                         </div>
                         <div class="populares__card___descricao">
                             <?= $populares['descricao'] ?>
@@ -89,7 +93,8 @@ $lancamentos = $publicacoes->exibirLancamentos();
                     <div class="populares__card___corpo">
                         <div class="populares__card___cabecalho">
                             <h5 class="populares__card___titulo"><?= $destaque['titulo'] ?></h5>
-                            <time class="populares__card___data" datetime=<?= $destaque['data'] ?>><?= $destaque['data'] ?></time>
+                            <time class="populares__card___data" datetime=<?= $destaque['data_pub'] ?>><?php $date = date_create($destaque['data_pub']);
+                                                                                                        echo date_format($date, 'd/m/Y'); ?></time>
                         </div>
                         <div class="populares__card___descricao">
                             <?= $destaque['descricao'] ?>
@@ -119,7 +124,8 @@ $lancamentos = $publicacoes->exibirLancamentos();
                     <div class="populares__card___corpo">
                         <div class="populares__card___cabecalho">
                             <h5 class="populares__card___titulo"><?= $lancamento['titulo'] ?></h5>
-                            <time class="populares__card___data" datetime=<?= $lancamento['data'] ?>><?= $lancamento['data'] ?></time>
+                            <time class="populares__card___data" datetime=<?= $lancamento['data_pub'] ?>><?php $date = date_create($lancamento['data_pub']);
+                                                                                                            echo date_format($date, 'd/m/Y'); ?></time>
                         </div>
                         <div class="populares__card___descricao">
                             <?= $lancamento['descricao'] ?>
