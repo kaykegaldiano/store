@@ -106,4 +106,15 @@ class Publicacoes
         $publicacao = $stmt->get_result()->fetch_assoc();
         return $publicacao;
     }
+
+    public function formattedDate($date)
+    {
+        if (is_null($date) || $date === '' || !$date) {
+            return 'Não definida';
+        } else {
+            $newDate = date_create($date);
+            $fmtDate = date_format($newDate, 'd/m/Y');
+            return $fmtDate;
+        }
+    }
 }
