@@ -7,13 +7,13 @@ $categorias = $publicacoesDestaques->exibirCategorias();
 ?>
 
 <section class="destaques">
-    <a href="publicacoes.php" class="destaques__principal caixa">
+    <div href="publicacoes.php" class="destaques__principal caixa">
         <h3 class="destaques__titulo"><?= $destaquePrincipal['titulo'] ?></h3>
-    </a>
+    </div>
     <?php foreach ($destaquesSecundarios as $secundarios) : ?>
-        <a href="publicacoes.php" class="destaques__secundario caixa">
+        <div href="publicacoes.php" class="destaques__secundario caixa">
             <h3 class="destaques__titulo"><?= $secundarios['titulo'] ?></h3>
-        </a>
+        </div>
     <?php endforeach ?>
     <div class="destaques__categorias">
         <ul class="destaques__categorias___lista">
